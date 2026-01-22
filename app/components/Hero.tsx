@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="https://www.shutterstock.com/search/beautiful-car" 
+          src="https://images.pexels.com/photos/13575248/pexels-photo-13575248.jpeg?auto=compress&cs=tinysrgb&w=600" 
           alt="Lincoln Navigator Background" 
           fill
           className="object-cover object-center opacity-40 grayscale-[20%]"
