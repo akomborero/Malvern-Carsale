@@ -74,7 +74,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} Breezecars Dealership. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} MalvernCarsale. All Rights Reserved.</p>
           <div className="flex gap-6">
             <a href="https://facebook.com" className="hover:text-white transition-colors">Facebook</a>
             <a href="https://instagram.com" className="hover:text-white transition-colors">Instagram</a>
