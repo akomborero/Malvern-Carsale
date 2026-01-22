@@ -47,9 +47,9 @@ export default function CarDetails({ carId }: CarDetailsProps) {
   const handleWhatsAppDirect = () => {
     if (!car) return;
 
-    const myNumber = "263 771 716 547"; // Replace with your number
+    const myNumber = "263 715423657"; // Replace with your number
    const message = `🚀 *New Inquiry: ${car.year} ${car.make} ${car.model}*%0A%0A` +
-  `Hi Breezecars! I am interested in this vehicle. Is it still available for viewing?%0A%0A` +
+  `Hi MalvernCarsale! I am interested in this vehicle. Is it still available for viewing?%0A%0A` +
   
   `*Link:* ${window.location.href}`;
     
