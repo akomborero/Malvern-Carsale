@@ -45,7 +45,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <h2 className="text-3xl font-black text-gray-900 italic uppercase tracking-tighter">
             Admin Login
           </h2>
-          <p className="text-gray-500 font-bold text-sm mt-2">Breezecars Management Portal</p>
+          <p className="text-gray-500 font-bold text-sm mt-2">MalvernCarsale Management Portal</p>
         </div>
 
         <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
@@ -53,7 +53,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Email</label>
             <input 
               type="email" 
-              placeholder="admin@breezecars.com" 
+              placeholder="MalvernCarsale@gmail.com" 
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}

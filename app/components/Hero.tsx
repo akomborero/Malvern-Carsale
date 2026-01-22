@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="https://static.vecteezy.com/system/resources/thumbnails/055/672/799/small/red-modern-red-sport-car-driving-fast-on-scenic-road-in-forest-at-sunset-automotive-background-tuning-template-auto-transport-photo.jpg" 
+          src="https://www.shutterstock.com/search/beautiful-car" 
           alt="Lincoln Navigator Background" 
           fill
           className="object-cover object-center opacity-40 grayscale-[20%]"
@@ -29,7 +29,7 @@ export default function Hero() {
           {/* COMPACT CARD */}
           <div className="bg-white rounded-[32px] p-8 shadow-2xl w-full max-w-[420px] transform hover:-translate-y-1 transition-transform duration-500">
             <div className="inline-block px-3 py-1 rounded-full bg-purple-50 text-[#632197] text-[9px] font-black uppercase tracking-[0.2em] mb-4">
-              Breezecars Premium
+              MalvernCarsale Premium
             </div>
             
             <h2 className="text-[32px] md:text-[38px] font-black mb-3 text-gray-900 leading-[1.1] tracking-tight italic">

@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand & Mission */}
           <div className="space-y-6">
             <Link href="/" className="text-2xl font-black text-[#632197] italic tracking-tighter">
-              breezecars<span className="text-gray-400">.com</span>
+               MalvernCarsale<span className="text-gray-400">.com</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Providing Zimbabwe with the best selection of quality vehicles. 
@@ -23,20 +23,20 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-400 font-medium">
               <li className="flex items-center gap-3 group">
                 <span className="text-[#632197] text-xl"></span>
-                <a href="tel:+263771716547" className="group-hover:text-white transition-colors underline-offset-4 hover:underline">
-                  +263 771 716 547
+                <a href="tel: +263 7778336" className="group-hover:text-white transition-colors underline-offset-4 hover:underline">
+                  +263 7778336
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
                 <span className="text-[#632197] text-xl"></span>
-                <a href="mailto:breezecardealership@gmail.com" className="group-hover:text-white transition-colors break-all">
-                breezecardealership@gmail.com
+                <a href="mailto:  mmfandaedza.tm@gmail.com" className="group-hover:text-white transition-colors break-all">
+                mmfandaedza.tm@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
                 <span className="text-[#632197] text-xl"></span>
                 <span className="group-hover:text-white transition-colors">
-                  Harare, Zimbabwe
+                 18902, Mutare Road
                 </span>
               </li>
             </ul>

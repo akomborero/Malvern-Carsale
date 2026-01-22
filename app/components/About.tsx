@@ -21,9 +21,9 @@ export default function About() {
               <span className="text-[#632197]">DRIVING EXPERIENCE.</span>
             </h2>
             <p className="text-lg text-gray-600 font-medium leading-relaxed mb-6">
-              Breezecars started with a simple vision: to make high-quality vehicles accessible through a 
+              Malven Carsale started with a simple vision: to make high-quality vehicles accessible through a 
               transparent, digital-first marketplace. We believe buying or selling a car should be as 
-              simple as catching a breeze.
+              simple as catching a Malven Carsale .
             </p>
             <div className="flex gap-4">
                <div className="h-12 w-1 bg-[#632197]"></div>
@@ -38,7 +38,7 @@ export default function About() {
             <div className="relative aspect-video lg:aspect-4/3 rounded-[40px] overflow-hidden shadow-2xl">
               <Image 
                 src="https://i.pinimg.com/736x/1b/b3/ed/1bb3edff82885dceb2d1d67bafebd122.jpg"
-                alt="Breezecars Team"
+                alt="Malven Carsale "
                 fill
                 className="object-cover"
                 unoptimized
@@ -65,7 +65,7 @@ export default function About() {
         {/* Culture Section */}
         <div className="mt-24 bg-[#0a0a0a] rounded-[50px] p-12 md:p-20 text-white flex flex-col md:flex-row justify-between items-center gap-12">
            <div className="max-w-md">
-              <h3 className="text-3xl font-black italic mb-6">Why Choose <span className="text-[#632197]">Breeze?</span></h3>
+              <h3 className="text-3xl font-black italic mb-6">Why Choose <span className="text-[#632197]"> MalvernCarsale?</span></h3>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-[#632197]"></span>

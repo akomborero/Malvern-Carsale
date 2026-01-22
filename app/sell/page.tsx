@@ -15,7 +15,7 @@ export default function SellPage() {
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm">
               <h4 className="font-bold text-gray-900">How long is my offer valid?</h4>
-              <p className="text-gray-500 mt-2">Your Breezecars instant offer is valid for 7 days or an additional 500 miles.</p>
+              <p className="text-gray-500 mt-2">Your  MalvernCarsale instant offer is valid for 7 days or an additional 500 miles.</p>
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm">
               <h4 className="font-bold text-gray-900">Do I have to buy a car from you to sell mine?</h4>

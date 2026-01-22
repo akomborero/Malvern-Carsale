@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Left Side: Logo */}
         <div className="flex items-center gap-10">
           <Link href="/" className="text-[28px] font-black text-[#632197] italic tracking-tighter">
-            Breezecars
+            MalvernCarsale
           </Link>
 
           {/* Navigation Links - Desktop */}
