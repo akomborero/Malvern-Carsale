@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Breezecars | Premium Dealership',
+  title: 'MalvernCarsale | Premium Dealership',
   description: "Zimbabwe's Most Trusted Car Marketplace",
 };
 
