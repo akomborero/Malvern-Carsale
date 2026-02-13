@@ -21,7 +21,7 @@ export default function About() {
               <span className="text-black">DRIVING EXPERIENCE.</span>
             </h2>
             <p className="text-lg text-gray-600 font-medium leading-relaxed mb-6">
-              Qaulity import cars started with a simple vision: to make high-quality vehicles accessible through a 
+               Malven Carsale started with a simple vision: to make high-quality vehicles accessible through a 
               transparent, digital-first marketplace. We believe buying or selling a car should be as 
               simple as catching a breeze.
             </p>
@@ -65,7 +65,7 @@ export default function About() {
         {/* Culture Section */}
         <div className="mt-24 bg-[#0a0a0a] rounded-[50px] p-12 md:p-20 text-white flex flex-col md:flex-row justify-between items-center gap-12">
            <div className="max-w-md">
-              <h3 className="text-3xl font-black italic mb-6">Why Choose <span className="text-white">  Qaulity import cars</span></h3>
+              <h3 className="text-3xl font-black italic mb-6">Why Choose <span className="text-white">  Malven Carsale</span></h3>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-white"></span>

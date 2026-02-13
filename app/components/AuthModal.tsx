@@ -45,7 +45,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <h2 className="text-3xl font-black text-gray-900 italic uppercase tracking-tighter">
             Admin Login
           </h2>
-          <p className="text-gray-500 font-bold text-sm mt-2">Qaulity import cars Management Portal</p>
+          <p className="text-gray-500 font-bold text-sm mt-2"> Malven Carsale Management Portal</p>
         </div>
 
         <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>

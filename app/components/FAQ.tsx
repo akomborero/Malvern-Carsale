@@ -4,14 +4,14 @@ import { useState } from 'react';
 const faqData = [
   {
     question: "How do I know I'm getting a fair price for my car?",
-    answer: "At  Qaulity import cars we use real-time market data to compare thousands of similar listings. Our 'Deal Rating' system helps you see exactly how a car's price compares to the local market average."
+    answer: "At   Malven Carsale we use real-time market data to compare thousands of similar listings. Our 'Deal Rating' system helps you see exactly how a car's price compares to the local market average."
   },
   {
     question: "Can I buy a car entirely online?",
     answer: "Yes! You can browse our inventory, apply for financing, and even arrange for home delivery. Our digital process is designed to be seamless and transparent."
   },
   {
-    question: "What is the Qaulity import cars inspection process?",
+    question: "What is the Your inspection process?",
     answer: "Every vehicle in our showroom undergoes a rigorous 150-point inspection by certified technicians to ensure safety, reliability, and mechanical integrity."
   },
   {

@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Left Side: Logo */}
         <div className="flex items-center gap-10">
           <Link href="/" className="text-[28px] font-black  text-black italic tracking-tighter">
-           Qaulity cars
+            Malven 
           </Link>
 
           {/* Navigation Links - Desktop */}

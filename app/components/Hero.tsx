@@ -29,7 +29,7 @@ export default function Hero() {
           {/* COMPACT CARD */}
           <div className="bg-white rounded-[32px] p-8 shadow-2xl w-full max-w-[420px] transform hover:-translate-y-1 transition-transform duration-500">
             <div className="inline-block px-3 py-1 rounded-full bg-gray-100 text-black text-[9px] font-black uppercase tracking-[0.2em] mb-4">
-              Qaulity cars Premium
+               Malven Carsale Premium
             </div>
             
             <h2 className="text-[32px] md:text-[38px] font-black mb-3 text-gray-900 leading-[1.1] tracking-tight italic">
