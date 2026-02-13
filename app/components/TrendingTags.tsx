@@ -31,10 +31,9 @@ export default function QuickFilters() {
             border-black 
             bg-white 
             text-black
-            hover:bg-[#632197] 
-            hover:border-[#632197] 
+            hover:bg-black 
+            hover:border-black 
             hover:text-white 
-            hover:shadow-[0_8px_20px_-10px_rgba(99,33,151,0.5)]
             transition-all 
             duration-300 
             active:scale-90

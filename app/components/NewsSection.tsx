@@ -39,9 +39,9 @@ export default async function NewsSection() {
     <section id="news" className="px-6 py-24 bg-white border-t border-gray-100 scroll-mt-20">
       <div className="container mx-auto">
         <div className="flex items-center justify-between mb-12">
-           <h2 className="text-4xl font-black text-gray-900 italic tracking-tighter">News & <span className="text-[#632197]">Reviews</span></h2>
+           <h2 className="text-4xl font-black text-gray-900 italic tracking-tighter">News & <span className="text-black">Reviews</span></h2>
            <div className="hidden md:flex gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+              <span className="w-3 h-3 rounded-full bg-black animate-pulse"></span>
               <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Live Updates</span>
            </div>
         </div>
@@ -63,7 +63,7 @@ export default async function NewsSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
                     <div className="absolute bottom-0 p-6">
-                      <h3 className="text-white text-lg font-bold leading-tight group-hover:text-[#632197] transition-colors line-clamp-2">
+                      <h3 className="text-white text-lg font-bold leading-tight group-hover:text-white transition-colors line-clamp-2">
                         {article.title}
                       </h3>
                     </div>
@@ -76,7 +76,7 @@ export default async function NewsSection() {
             {featuredArticle && (
             <a href={featuredArticle.url} target="_blank" rel="noopener noreferrer" className="block bg-gray-900 rounded-[40px] p-8 md:p-12 text-white relative overflow-hidden group cursor-pointer">
                <div className="relative z-10">
-                  <span className="text-[#632197] font-black text-xs uppercase tracking-[0.3em]">Featured Story</span>
+                  <span className="text-white font-black text-xs uppercase tracking-[0.3em]">Featured Story</span>
                   <h3 className="text-3xl font-black mt-4 mb-6 max-w-md italic line-clamp-3">{featuredArticle.title}</h3>
                   <button className="flex items-center gap-4 font-black uppercase text-xs tracking-widest group-hover:gap-6 transition-all">
                     <span className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">→</span>
@@ -84,7 +84,7 @@ export default async function NewsSection() {
                   </button>
                </div>
                {/* Faded Background Car Image */}
-               <img src={featuredArticle.urlToImage!} className="absolute right-0 top-0 h-full w-2/3 object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-700" alt="" />
+               <img src={featuredArticle.urlToImage!} className="absolute right-0 top-0 h-full w-2/3 object-cover opacity-30 grayscale transition-all duration-700" alt="" />
             </a>
             )}
           </div>
@@ -95,10 +95,10 @@ export default async function NewsSection() {
             <div className="divide-y divide-gray-200">
               {trendingArticles.map((article, i) => (
                 <a href={article.url} target="_blank" rel="noopener noreferrer" key={i} className="py-6 flex gap-6 group cursor-pointer first:pt-0 block">
-                  <span className="text-3xl font-black text-gray-200 group-hover:text-[#632197] transition-colors tabular-nums">
+                  <span className="text-3xl font-black text-gray-200 group-hover:text-black transition-colors tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-sm font-bold text-gray-800 leading-snug group-hover:text-[#632197] transition-colors line-clamp-2">
+                  <p className="text-sm font-bold text-gray-800 leading-snug group-hover:text-black transition-colors line-clamp-2">
                     {article.title}
                   </p>
                 </a>

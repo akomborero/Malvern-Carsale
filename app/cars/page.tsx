@@ -7,7 +7,7 @@ export default function CarsPage() {
         <div className="container mx-auto">
           <h1 className="text-4xl font-black text-gray-900">Cars for Sale</h1>
           <p className="text-gray-500 font-bold uppercase text-xs tracking-widest mt-2">
-             MalvernCarsale / Inventory
+           Bolana Clean Motors / Inventory
           </p>
         </div>
       </div>

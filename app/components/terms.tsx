@@ -6,19 +6,19 @@ export default function Terms() {
     <section className="bg-white py-16 px-6">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-black text-gray-900 italic uppercase tracking-tighter mb-8">
-          Terms of <span className="text-[#632197]">Service</span>
+          Terms of <span className="text-black">Service</span>
         </h1>
 
         <div className="space-y-10 text-gray-900">
           <div className="border-l-4 border-black pl-6">
-            <h3 className="text-xl font-black uppercase tracking-widest text-[#632197] mb-3">01. Listing Rules</h3>
+            <h3 className="text-xl font-black uppercase tracking-widest text-black mb-3">01. Listing Rules</h3>
             <p className="font-bold leading-relaxed text-lg">
               All vehicles must be located in Zimbabwe. You must provide accurate USD pricing and honest mileage reports.
             </p>
           </div>
 
           <div className="border-l-4 border-black pl-6">
-            <h3 className="text-xl font-black uppercase tracking-widest text-[#632197] mb-3">02. Transactions</h3>
+            <h3 className="text-xl font-black uppercase tracking-widest text-black mb-3">02. Transactions</h3>
             <p className="font-bold leading-relaxed text-lg">
               Breezecars is a platform for connecting buyers and sellers. We are not responsible for the physical exchange of money or vehicle condition.
             </p>

@@ -21,8 +21,8 @@ export default function Navbar() {
       <nav className="flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200 sticky top-0 z-[100]">
         {/* Left Side: Logo */}
         <div className="flex items-center gap-10">
-          <Link href="/" className="text-[28px] font-black text-[#632197] italic tracking-tighter">
-            MalvernCarsale
+          <Link href="/" className="text-[28px] font-black  text-black italic tracking-tighter">
+           Qaulity cars
           </Link>
 
           {/* Navigation Links - Desktop */}
@@ -31,7 +31,7 @@ export default function Navbar() {
               <Link 
                 key={link.name} 
                 href={link.href} 
-                className="hover:text-[#632197] transition-colors underline-offset-4 hover:underline"
+                className="hover:text-black transition-colors underline-offset-4 hover:underline"
               >
                 {link.name}
               </Link>
@@ -40,7 +40,7 @@ export default function Navbar() {
               <>
                 <Link 
                   href="/admin" 
-                  className="text-[#632197] hover:text-[#4d1975] transition-colors underline-offset-4 hover:underline"
+                  className="text-black hover:text-gray-700 transition-colors underline-offset-4 hover:underline"
                 >
                   Manage Inventory
                 </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
               <span className="text-xs font-bold text-gray-500">Hi, {user.email.split('@')[0]}</span>
               <button 
                 onClick={logout}
-                className="text-[14px] font-bold text-red-500 hover:text-red-700 transition-colors"
+                className="text-[14px] font-bold text-gray-500 hover:text-black transition-colors"
               >
                 Sign Out
               </button>
@@ -65,7 +65,7 @@ export default function Navbar() {
           ) : (
             <button 
               onClick={() => setIsAuthModalOpen(true)}
-              className="hidden sm:flex items-center gap-2 text-[14px] font-bold text-[#333333] hover:text-[#632197]"
+              className="hidden sm:flex items-center gap-2 text-[14px] font-bold text-[#333333] hover:text-black"
             >
               <span>Sign In</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -83,7 +83,7 @@ export default function Navbar() {
               xmlns="http://www.w3.org/2000/svg" 
               fill="none" viewBox="0 0 24 24" 
               strokeWidth={2} stroke="currentColor" 
-              className="w-7 h-7 text-[#632197]"
+              className="w-7 h-7 text-black"
             >
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -106,7 +106,7 @@ export default function Navbar() {
           <Link 
             href="/" 
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 text-4xl font-black text-[#632197] italic hover:scale-105 transition-transform"
+            className="flex items-center gap-2 text-4xl font-black text-black italic hover:scale-105 transition-transform"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
               <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
@@ -122,7 +122,7 @@ export default function Navbar() {
               key={link.name} 
               href={link.href} 
               onClick={() => setIsOpen(false)}
-              className="text-3xl font-black text-gray-900 italic hover:text-[#632197]"
+              className="text-3xl font-black text-gray-900 italic hover:text-black"
             >
               {link.name}
             </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
             <Link 
               href="/admin" 
               onClick={() => setIsOpen(false)}
-              className="text-3xl font-black text-[#632197] italic hover:underline"
+              className="text-3xl font-black text-black italic hover:underline"
             >
               Admin Panel
             </Link>
@@ -147,7 +147,7 @@ export default function Navbar() {
           ) : (
             <button 
               onClick={() => { setIsOpen(false); setIsAuthModalOpen(true); }}
-              className="w-full py-5 bg-[#632197] text-white font-black rounded-2xl italic uppercase tracking-widest shadow-xl"
+              className="w-full py-5 bg-black text-white font-black rounded-2xl italic uppercase tracking-widest shadow-xl"
             >
               Sign In
             </button>
