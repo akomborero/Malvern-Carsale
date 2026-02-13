@@ -12,7 +12,7 @@ export default function Footer() {
              Malven carsale
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Providing South Africa with the best selection of quality vehicles. 
+              Providing Zimbabwe with the best selection of quality vehicles. 
               Your journey to a better drive starts here with transparency and trust.
             </p>
           </div>
