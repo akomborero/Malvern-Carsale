@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { useAuth } from './AuthProvider';
+import StatusModal from './StatusModal';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -11,6 +12,12 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ isOpen: boolean; title: string; message: string; type: 'success' | 'error' }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'success'
+  });
   
   const { login } = useAuth();
 
@@ -20,7 +27,12 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       await login(email, password);
       onClose();
     } catch (error) {
-      alert((error as Error).message);
+      setStatus({
+        isOpen: true,
+        title: 'Login Failed',
+        message: (error as Error).message,
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }
@@ -86,6 +98,14 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
           Authorized Personnel Only
         </div>
       </div>
+
+      <StatusModal 
+        isOpen={status.isOpen}
+        onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+        title={status.title}
+        message={status.message}
+        type={status.type}
+      />
     </div>
   );
 }

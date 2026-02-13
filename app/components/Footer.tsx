@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand & Mission */}
           <div className="space-y-6">
             <Link href="/" className="text-2xl font-black text-white italic tracking-tighter">
-             Qaulity import cars
+             Malven carsale
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Providing South Africa with the best selection of quality vehicles. 
@@ -24,25 +24,25 @@ export default function Footer() {
               <li className="flex items-center gap-3 group">
                 <span className="text-white text-xl"></span>
                 <a href="tel:+263771716547" className="group-hover:text-white transition-colors underline-offset-4 hover:underline">
-                  +27 78 759 3914
+                  +263 77 789 3362
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
                 <span className="text-white text-xl"></span>
                 <a href="mailto:motorssa956@gmail.com" className="group-hover:text-white transition-colors break-all">
-                motorssa956@gmail.com
+                mmfundaedza.tm@gmail.com
                 </a>
               </li>
                 <li className="flex items-center gap-3 group">
                 <span className="text-white text-xl"></span>
                 <span className="group-hover:text-white transition-colors">
-                  270 Klip Rd,Lotus River
+                  19802,Mutare Road, Eastlea
                 </span>
               </li>
               <li className="flex items-center gap-3 group">
                 <span className="text-white text-xl"></span>
                 <span className="group-hover:text-white transition-colors">
-                  Cape Town 7805,South Africa
+                Hrare,Zimbabwe
                 </span>
               </li>
             </ul>
@@ -80,7 +80,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} quality-import Cars . All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Malven carsale. All Rights Reserved.</p>
           <div className="flex gap-6">
             <a href="https://facebook.com" className="hover:text-white transition-colors">Facebook</a>
             <a href="https://instagram.com" className="hover:text-white transition-colors">Instagram</a>

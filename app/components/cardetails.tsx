@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { supabase } from '../../server/supabaseClient';
 import VehicleGrid from './VehicleGrid';
 import { useAuth } from './AuthProvider'; // Ensure this path matches your project
+import StatusModal from './StatusModal';
+import ConfirmationModal from './ConfirmationModal';
 
 interface CarDetailsProps {
   carId: string;
@@ -44,6 +46,16 @@ export default function CarDetails({ carId }: CarDetailsProps) {
   const [reviewRating, setReviewRating] = useState(5);
   const [reviewComment, setReviewComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ isOpen: boolean; title: string; message: string; type: 'success' | 'error' }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'success'
+  });
+  const [deleteConfirmation, setDeleteConfirmation] = useState<{ isOpen: boolean; reviewId: string | null }>({
+    isOpen: false,
+    reviewId: null
+  });
 
   const averageRating = reviews.length > 0 
     ? (reviews.reduce((acc, item) => acc + item.rating, 0) / reviews.length).toFixed(1)
@@ -62,6 +74,12 @@ export default function CarDetails({ carId }: CarDetailsProps) {
       if (reviewData) setReviews(reviewData);
     } catch (err) {
       console.error("Fetch error:", err);
+      setStatus({
+        isOpen: true,
+        title: 'Error',
+        message: 'Failed to load car details. Please try again.',
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }
@@ -83,26 +101,54 @@ export default function CarDetails({ carId }: CarDetailsProps) {
     }]);
 
     if (error) {
-      alert(error.message);
+      setStatus({
+        isOpen: true,
+        title: 'Submission Failed',
+        message: error.message,
+        type: 'error'
+      });
     } else {
       setReviewName(''); setReviewEmail(''); setReviewComment('');
       fetchCarAndReviews();
+      setStatus({
+        isOpen: true,
+        title: 'Success',
+        message: 'Your review has been posted successfully.',
+        type: 'success'
+      });
     }
     setSubmitting(false);
   };
 
-  const handleDeleteReview = async (reviewId: string) => {
-    if (window.confirm('Are you sure you want to delete this customer review?')) {
-      const { error } = await supabase
-        .from('reviews')
-        .delete()
-        .eq('id', reviewId);
+  const handleDeleteReview = (reviewId: string) => {
+    setDeleteConfirmation({ isOpen: true, reviewId });
+  };
 
-      if (error) {
-        alert(error.message);
-      } else {
-        setReviews(prev => prev.filter(r => r.id !== reviewId));
-      }
+  const executeDeleteReview = async () => {
+    if (!deleteConfirmation.reviewId) return;
+    const reviewId = deleteConfirmation.reviewId;
+    setDeleteConfirmation({ isOpen: false, reviewId: null });
+
+    const { error } = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', reviewId);
+
+    if (error) {
+      setStatus({
+        isOpen: true,
+        title: 'Delete Failed',
+        message: error.message,
+        type: 'error'
+      });
+    } else {
+      setReviews(prev => prev.filter(r => r.id !== reviewId));
+      setStatus({
+        isOpen: true,
+        title: 'Success',
+        message: 'Review deleted successfully.',
+        type: 'success'
+      });
     }
   };
 
@@ -265,6 +311,22 @@ export default function CarDetails({ carId }: CarDetailsProps) {
       <div className="mt-20">
         <VehicleGrid />
       </div>
+
+      <StatusModal 
+        isOpen={status.isOpen}
+        onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+        title={status.title}
+        message={status.message}
+        type={status.type}
+      />
+
+      <ConfirmationModal 
+        isOpen={deleteConfirmation.isOpen}
+        onClose={() => setDeleteConfirmation({ isOpen: false, reviewId: null })}
+        onConfirm={executeDeleteReview}
+        title="Delete Review"
+        message="Are you sure you want to delete this customer review? This action cannot be undone."
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { supabase } from '../../server/supabaseClient';
+import StatusModal from './StatusModal';
 
 // 1. Defined strict types to avoid 'any'
 interface ReviewData {
@@ -33,6 +34,12 @@ export default function VehicleGrid() {
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
+  const [status, setStatus] = useState<{ isOpen: boolean; title: string; message: string; type: 'success' | 'error' }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'success'
+  });
 
   useEffect(() => {
     fetchLiveStock();
@@ -71,6 +78,12 @@ export default function VehicleGrid() {
       }
     } catch (err) {
       console.error("Error fetching cars:", err);
+      setStatus({
+        isOpen: true,
+        title: 'Connection Error',
+        message: 'Could not fetch vehicle inventory. Please check your connection.',
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }
@@ -171,6 +184,14 @@ export default function VehicleGrid() {
           </div>
         )}
       </div>
+
+      <StatusModal 
+        isOpen={status.isOpen}
+        onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+        title={status.title}
+        message={status.message}
+        type={status.type}
+      />
     </section>
   );
 }
