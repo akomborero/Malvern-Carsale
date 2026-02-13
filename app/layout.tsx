@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: ' Qaulity import cars| Premium Dealership',
-  description: "South Africa's Most Trusted Car Marketplace",
+  title: ' Malven carsale| Premium Dealership',
+  description: "Zimbabwe's Most Trusted Car Marketplace",
 };
 
 export default function RootLayout({
