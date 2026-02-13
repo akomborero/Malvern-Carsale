@@ -225,7 +225,7 @@ export default function CarDetails({ carId }: CarDetailsProps) {
                 <span className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1 block">Price</span>
                 <div className="text-4xl font-black text-black italic">${car.price_per_day.toLocaleString()}</div>
               </div>
-              <button onClick={handleWhatsAppDirect} className="px-10 py-5 bg-black text-white rounded-2xl font-black uppercase hover:bg-gray-800 transition-all shadow-xl w-full sm:w-auto active:scale-95">
+              <button onClick={handleWhatsAppDirect} className="px-10 py-5 bg-[#25D366] text-white rounded-2xl font-black uppercase hover:bg-[#128C7E] transition-all shadow-xl w-full sm:w-auto active:scale-95">
                 Chat on WhatsApp
               </button>
             </div>

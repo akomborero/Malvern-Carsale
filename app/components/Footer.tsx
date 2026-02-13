@@ -84,7 +84,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <a href="https://facebook.com" className="hover:text-white transition-colors">Facebook</a>
             <a href="https://instagram.com" className="hover:text-white transition-colors">Instagram</a>
-            <a href="https://whatsapp.com" className="hover:text-white transition-colors">WhatsApp</a>
+            <a href="https://whatsapp.com" className="hover:text-[#25D366] transition-colors">WhatsApp</a>
           </div>
         </div>
       </div>

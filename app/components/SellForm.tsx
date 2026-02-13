@@ -160,7 +160,7 @@ export default function SellForm() {
           </div>
         </div>
 
-        <button type="submit" className="w-full py-6 bg-black text-white font-black rounded-3xl uppercase tracking-[0.2em] shadow-xl hover:bg-gray-800 transition-all active:scale-95">
+        <button type="submit" className="w-full py-6 bg-[#25D366] text-white font-black rounded-3xl uppercase tracking-[0.2em] shadow-xl hover:bg-[#128C7E] transition-all active:scale-95">
            SUBMIT TO WHATSAPP
         </button>
       </form>
