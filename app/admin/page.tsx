@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from 'react'; // Added useRef
 import Image from 'next/image';
 import { useAuth } from '../components/AuthProvider';
 import { supabase } from '../../server/supabaseClient';
+import StatusModal from '../components/StatusModal';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 interface SupabaseCar {
   id: string;
@@ -47,15 +49,32 @@ export default function AdminPage() {
   const [fuelType, setFuelType] = useState('');
   const [description, setDescription] = useState('');
   const [editingCarId, setEditingCarId] = useState<string | null>(null);
+  const [status, setStatus] = useState<{ isOpen: boolean; title: string; message: string; type: 'success' | 'error' }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'success'
+  });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const ITEMS_PER_PAGE = 5;
+  const [deleteConfirmation, setDeleteConfirmation] = useState<{ isOpen: boolean; carId: string | null }>({
+    isOpen: false,
+    carId: null
+  });
 
   useEffect(() => {
     fetchCars();
-  }, []);
+  }, [currentPage]);
 
   async function fetchCars() {
-    const { data, error } = await supabase
+    const from = (currentPage - 1) * ITEMS_PER_PAGE;
+    const to = from + ITEMS_PER_PAGE - 1;
+
+    const { data, error, count } = await supabase
       .from('cars')
-      .select('*')
+      .select('*', { count: 'exact' })
+      .range(from, to)
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -73,6 +92,7 @@ export default function AdminPage() {
             description: c.description || ''
         }));
         setCars(formattedCars);
+        if (count !== null) setTotalCount(count);
     }
   }
 
@@ -143,6 +163,8 @@ export default function AdminPage() {
         user_id: (await supabase.auth.getUser()).data.user?.id
       };
 
+      const isNewPost = !editingCarId;
+
       if (editingCarId) {
         const { error } = await supabase.from('cars').update(carPayload).eq('id', editingCarId);
         if (error) throw error;
@@ -152,21 +174,52 @@ export default function AdminPage() {
       }
 
       resetForm();
-      fetchCars();
-      alert("Success!");
+      
+      if (isNewPost && currentPage !== 1) {
+        setCurrentPage(1);
+      } else {
+        fetchCars();
+      }
+
+      setStatus({
+        isOpen: true,
+        title: 'Success',
+        message: editingCarId ? 'Vehicle updated successfully.' : 'Vehicle listed successfully.',
+        type: 'success'
+      });
     } catch (err) {
       const error = err as Error;
-      alert(error.message);
+      setStatus({
+        isOpen: true,
+        title: 'Operation Failed',
+        message: error.message,
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  const removeCar = async (id: string) => {
-    if (window.confirm('Are you sure you want to delete this car?')) {
-      const { error } = await supabase.from('cars').delete().eq('id', id);
-      if (error) alert(error.message);
-      else fetchCars();
+  const removeCar = (id: string) => {
+    setDeleteConfirmation({ isOpen: true, carId: id });
+  };
+
+  const executeDeleteCar = async () => {
+    if (!deleteConfirmation.carId) return;
+    const id = deleteConfirmation.carId;
+    setDeleteConfirmation({ isOpen: false, carId: null });
+
+    const { error } = await supabase.from('cars').delete().eq('id', id);
+    if (error) {
+      setStatus({
+        isOpen: true,
+        title: 'Delete Failed',
+        message: error.message,
+        type: 'error'
+      });
+    } else {
+      fetchCars();
+      // Optional: Show success for delete, or just let the list update
     }
   };
 
@@ -237,8 +290,16 @@ export default function AdminPage() {
           </div>
 
           <div className="md:col-span-2 flex gap-3">
-            <button disabled={loading} type="submit" className="flex-[2] py-5 bg-black text-white rounded-2xl font-black uppercase tracking-widest hover:bg-gray-800 disabled:bg-gray-400 transition-all shadow-xl">
-              {loading ? "Processing..." : (editingCarId ? 'Save Changes' : 'Publish Listing')}
+            <button disabled={loading} type="submit" className="flex-[2] py-5 bg-black text-white rounded-2xl font-black uppercase tracking-widest hover:bg-gray-800 disabled:bg-gray-400 transition-all shadow-xl flex items-center justify-center gap-2">
+              {loading ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Processing...
+                </>
+              ) : (editingCarId ? 'Save Changes' : 'Publish Listing')}
             </button>
             {editingCarId && (
               <button type="button" onClick={resetForm} className="flex-1 py-5 bg-gray-200 text-black rounded-2xl font-black uppercase tracking-widest hover:bg-gray-300 transition-all">
@@ -278,7 +339,46 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {totalCount > ITEMS_PER_PAGE && (
+          <div className="flex justify-center items-center gap-6 mt-12">
+            <button 
+              disabled={currentPage === 1} 
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-black uppercase text-xs tracking-widest hover:border-black hover:bg-black hover:text-white transition-all disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black disabled:hover:border-gray-200"
+            >
+              Previous
+            </button>
+            <span className="font-black text-black text-sm">
+              Page {currentPage} of {Math.ceil(totalCount / ITEMS_PER_PAGE)}
+            </span>
+            <button 
+              disabled={currentPage >= Math.ceil(totalCount / ITEMS_PER_PAGE)} 
+              onClick={() => setCurrentPage(p => p + 1)}
+              className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-black uppercase text-xs tracking-widest hover:border-black hover:bg-black hover:text-white transition-all disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-black disabled:hover:border-gray-200"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </section>
+
+      <StatusModal 
+        isOpen={status.isOpen}
+        onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+        title={status.title}
+        message={status.message}
+        type={status.type}
+      />
+
+      <ConfirmationModal 
+        isOpen={deleteConfirmation.isOpen}
+        onClose={() => setDeleteConfirmation({ isOpen: false, carId: null })}
+        onConfirm={executeDeleteCar}
+        title="Delete Vehicle"
+        message="Are you sure you want to remove this vehicle from the inventory? This action cannot be undone."
+      />
     </div>
   );
 }

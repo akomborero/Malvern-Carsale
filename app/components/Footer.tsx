@@ -29,7 +29,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 group">
                 <span className="text-white text-xl"></span>
-                <a href="mailto:motorssa956@gmail.com" className="group-hover:text-white transition-colors break-all">
+                <a href="mailto:mmfundaedza.tm@gmail.com" className="group-hover:text-white transition-colors break-all">
                 mmfundaedza.tm@gmail.com
                 </a>
               </li>

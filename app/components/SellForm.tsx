@@ -1,11 +1,17 @@
 "use client";
 import { useState } from 'react';
 import Image from 'next/image';
+import StatusModal from './StatusModal';
 
 export default function SellForm() {
   const [showForm, setShowForm] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [images, setImages] = useState<File[]>([]);
+  const [status, setStatus] = useState<{ isOpen: boolean; title: string; message: string; type: 'success' | 'error' }>({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'success'
+  });
   
   const [formData, setFormData] = useState({
     vehicleInfo: '',
@@ -39,20 +45,16 @@ export default function SellForm() {
     const message = `* NEW CAR SUBMISSION*%0A%0A*Vehicle:* ${formData.vehicleInfo}%0A*Price:* $${formData.price} USD%0A*Location:* ${formData.location}%0A*Duty:* ${formData.dutyStatus}%0A*Mileage:* ${formData.mileage}km%0A*Fuel:* ${formData.fuelType}%0A*Trans:* ${formData.transmission}%0A%0A*CONTACT*%0A*Name:* ${formData.fullName}%0A*Phone:* ${formData.phone}%0A*Photos:* ${images.length} attached`;
 
     window.location.href = `whatsapp://send?phone=${myNumber}&text=${message}`;
-    setSubmitted(true);
+    setStatus({
+      isOpen: true,
+      title: 'Opening WhatsApp',
+      message: 'We are redirecting you to WhatsApp to complete your submission.',
+      type: 'success'
+    });
+    setShowForm(false);
   };
 
   const inputClass = "w-full p-4 rounded-xl border border-gray-300 bg-white text-gray-900 font-bold placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all";
-
-  if (submitted) {
-    return (
-      <div className="max-w-4xl mx-auto px-6 py-32 text-center animate-in zoom-in duration-500">
-        <div className="w-24 h-24 bg-gray-100 text-black rounded-full flex items-center justify-center mx-auto mb-8 text-4xl">✓</div>
-        <h2 className="text-4xl font-black text-gray-900 mb-4 italic uppercase tracking-tighter">Opening WhatsApp...</h2>
-        <button onClick={() => { setSubmitted(false); setShowForm(false); }} className="px-10 py-4 border-2 border-gray-900 font-bold rounded-full hover:bg-gray-900 hover:text-white transition-all">BACK TO HOME</button>
-      </div>
-    );
-  }
 
   if (!showForm) {
     return (
@@ -78,6 +80,14 @@ export default function SellForm() {
             <Image src="https://www.cars.com/images/sell-v3/instant-offer-illustration.png" alt="Sell car" fill className="object-contain" unoptimized />
           </div>
         </div>
+
+        <StatusModal 
+          isOpen={status.isOpen}
+          onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+          title={status.title}
+          message={status.message}
+          type={status.type}
+        />
       </div>
     );
   }
@@ -154,6 +164,14 @@ export default function SellForm() {
            SUBMIT TO WHATSAPP
         </button>
       </form>
+
+      <StatusModal 
+        isOpen={status.isOpen}
+        onClose={() => setStatus(prev => ({ ...prev, isOpen: false }))}
+        title={status.title}
+        message={status.message}
+        type={status.type}
+      />
     </div>
   );
 }
