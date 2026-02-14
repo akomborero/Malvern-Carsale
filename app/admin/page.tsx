@@ -120,6 +120,17 @@ export default function AdminPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (imagePreviews.length === 0) {
+      setStatus({
+        isOpen: true,
+        title: 'Missing Photos',
+        message: 'Please upload at least one photo of the vehicle.',
+        type: 'error'
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -258,10 +269,10 @@ export default function AdminPage() {
           <input required placeholder="Make & Model" value={name} onChange={(e) => setName(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
           <input required placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
           <input required placeholder="Year" value={year} onChange={(e) => setYear(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
-          <input required placeholder="Mileage" value={mileage} onChange={(e) => setMileage(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
-          <input required placeholder="Transmission" value={transmission} onChange={(e) => setTransmission(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
-          <input required placeholder="Fuel Type" value={fuelType} onChange={(e) => setFuelType(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
-          <textarea required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white md:col-span-2 h-32 font-medium" />
+          <input placeholder="Mileage" value={mileage} onChange={(e) => setMileage(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
+          <input placeholder="Transmission" value={transmission} onChange={(e) => setTransmission(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
+          <input placeholder="Fuel Type" value={fuelType} onChange={(e) => setFuelType(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white font-bold" />
+          <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} className="p-4 rounded-2xl border border-gray-300 text-black bg-white md:col-span-2 h-32 font-medium" />
           
           <div className="md:col-span-2">
             <div className="border-4 border-dashed border-gray-200 p-10 rounded-3xl text-center bg-white hover:border-black transition-all group">
